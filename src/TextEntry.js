@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import wordCount from './wordCount'
 
 const textKey = 'text'
+const storage = window.localStorage
 
 const textAreaStyle = {
   height: '50em',
@@ -13,7 +14,7 @@ const textAreaStyle = {
 class TextEntry extends Component {
   constructor(props) {
     super(props)
-    const value = window.localStorage.getItem(textKey) || 'Write text here!'
+    const value = storage.getItem(textKey) || 'Write text here!'
     this.state = {
       value: value,
       count: wordCount(value),
@@ -26,7 +27,7 @@ class TextEntry extends Component {
     const value = event.target.value
     const count = wordCount(value)
     this.setState({ count, value })
-    window.localStorage.setItem(textKey, value)
+    storage.setItem(textKey, value)
   }
 
   handleSubmit(event) {
