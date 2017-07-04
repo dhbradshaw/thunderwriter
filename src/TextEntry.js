@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import wordCount from './wordCount'
 
+const textKey = 'text'
+
 const textAreaStyle = {
   height: '50em',
   width: '50em',
   backgroundColor: '#88B',
-  marginTop: '20px'
+  marginTop: '20px',
 }
 
 class TextEntry extends Component {
   constructor(props) {
     super(props)
+    const value = window.localStorage.getItem(textKey) || 'Write text here!'
     this.state = {
-      value: 'Hi there.',
-      count: 2
+      value: value,
+      count: wordCount(value),
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -23,6 +26,7 @@ class TextEntry extends Component {
     const value = event.target.value
     const count = wordCount(value)
     this.setState({ count, value })
+    window.localStorage.setItem(textKey, value)
   }
 
   handleSubmit(event) {
@@ -30,6 +34,10 @@ class TextEntry extends Component {
     event.preventDefault()
   }
   render() {
+    const style = { ...textAreaStyle }
+    if (this.state.count > this.props.goal) {
+      style.backgroundColor = 'red'
+    }
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
@@ -40,7 +48,7 @@ class TextEntry extends Component {
         <textarea
           value={this.state.value}
           onChange={this.handleChange}
-          style={textAreaStyle}
+          style={style}
         />
         <div>
           <input type="submit" value="Submit" />

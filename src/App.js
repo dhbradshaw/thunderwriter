@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 import './App.css'
+import Header from './Header'
 import TextEntry from './TextEntry'
 
 const fullHeight = {
-  height: '100%'
+  height: '100%',
 }
 
 class App extends Component {
   render() {
     return (
       <div className="App" style={fullHeight}>
-        <div className="App-header">
-          <h2>ThunderWrite</h2>
-        </div>
+        <Header />
         <div style={fullHeight}>
-          <TextEntry />
+          <TextEntry goal="1000" />
         </div>
       </div>
     )
