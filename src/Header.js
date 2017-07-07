@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Header = props =>
-  <div className="App-header">
+  <div style={props.style}>
     <h2>ThunderWriter</h2>
   </div>
 
