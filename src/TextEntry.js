@@ -4,13 +4,6 @@ import wordCount from './wordCount'
 const textKey = 'text'
 const storage = window.localStorage
 
-const textAreaStyle = {
-  height: '50em',
-  width: '50em',
-  backgroundColor: '#88B',
-  marginTop: '20px',
-}
-
 class TextEntry extends Component {
   constructor(props) {
     super(props)
@@ -35,7 +28,7 @@ class TextEntry extends Component {
     event.preventDefault()
   }
   render() {
-    const style = { ...textAreaStyle }
+    const style = { ...this.props.style }
     if (this.state.count > this.props.goal) {
       style.backgroundColor = 'red'
     }

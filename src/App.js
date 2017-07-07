@@ -5,6 +5,7 @@ import TextEntry from './TextEntry'
 const storage = window.localStorage
 const appBackground = storage.getItem('appBackground') || '#446'
 const headerBackground = storage.getItem('headerBackground') || '#334'
+const textAreaBackground = storage.getItem('textAreaBackground') || '#88B'
 const wordCountGoal = storage.getItem('wordCountGoal') || '500'
 
 const fullHeight = {
@@ -23,13 +24,20 @@ const headerStyle = {
   color: 'white',
 }
 
+const textAreaStyle = {
+  height: '50em',
+  width: '50em',
+  backgroundColor: textAreaBackground,
+  marginTop: '20px',
+}
+
 class App extends Component {
   render() {
     return (
       <div className="App" style={appStyle}>
         <Header style={headerStyle} />
         <div style={fullHeight}>
-          <TextEntry goal={wordCountGoal} />
+          <TextEntry goal={wordCountGoal} style={textAreaStyle} />
         </div>
       </div>
     )
