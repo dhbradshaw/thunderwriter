@@ -1,6 +1,6 @@
 # Thunderwriter
 
-Demo: http://thunderwriter.surge.sh/
+Demo: https://thunderwriter.surge.sh/
 
 I want to start writing fiction regularly.  Since I'm using React for
 Brighthike, I thought it would be fun to use React to shape the app in which I
