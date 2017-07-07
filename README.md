@@ -10,3 +10,5 @@ here's a first minimum.  Thunderwrite
 * Maintains a running word count.
 * Saves your work in the browser as you type so you don't lose words on refresh.
 * Changes collor when you reach your word count goal.
+
+License: MIT
