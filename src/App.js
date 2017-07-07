@@ -2,18 +2,22 @@ import React, { Component } from 'react'
 import Header from './Header'
 import TextEntry from './TextEntry'
 
+const storage = window.localStorage
+const appBackground = storage.getItem('appBackground') || '#446'
+const headerBackground = storage.getItem('headerBackground') || '#334'
+
 const fullHeight = {
   height: '100%',
 }
 
 const appStyle = {
-  backgroundColor: '#446',
+  backgroundColor: appBackground,
   textAlign: 'center',
   height: '100%',
 }
 
 const headerStyle = {
-  backgroundColor: '#334',
+  backgroundColor: headerBackground,
   padding: '20px',
   color: 'white',
 }
