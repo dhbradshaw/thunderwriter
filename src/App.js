@@ -13,7 +13,7 @@ class App extends Component {
       <div className="App" style={fullHeight}>
         <Header />
         <div style={fullHeight}>
-          <TextEntry goal="1000" />
+          <TextEntry goal="500" />
         </div>
       </div>
     )
