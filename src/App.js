@@ -5,6 +5,7 @@ import TextEntry from './TextEntry'
 const storage = window.localStorage
 const appBackground = storage.getItem('appBackground') || '#446'
 const headerBackground = storage.getItem('headerBackground') || '#334'
+const wordCountGoal = storage.getItem('wordCountGoal') || '500'
 
 const fullHeight = {
   height: '100%',
@@ -28,7 +29,7 @@ class App extends Component {
       <div className="App" style={appStyle}>
         <Header style={headerStyle} />
         <div style={fullHeight}>
-          <TextEntry goal="500" />
+          <TextEntry goal={wordCountGoal} />
         </div>
       </div>
     )
