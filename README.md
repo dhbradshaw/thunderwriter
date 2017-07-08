@@ -13,9 +13,13 @@ here's a first minimum.  Thunderwriter
 
 ## Usage
 
-Just go to https://thunderwriter.surge.sh/ and start typing.  When you hit 500 words, the background will change color.
+1.  Go to https://thunderwriter.surge.sh/
+2.  Start typing.  When you hit 500 words, the background will change color.
+3.  If you like what you've written, copy it over to Google Docs or something for editing.  Then start again.
 
-If you like what you've written, copy it over to Google Docs or something for editing.  Then start again.
+Double click to change preferences such as font size, background colors, and word count goal.  Then press submit.
+
+To restore a default preference, just blank out the field and press "submit".
 
 ## Installation
 
@@ -46,8 +50,6 @@ The development server creates a version optimized for rapid development, not de
     npm run build
 
 The resulting build folder can easily be deployed, for example, on Github Pages, Amazon S3, or Surge.
-
-## Usage
 
 ## License
 License: MIT
