@@ -4,9 +4,9 @@ import Preferences from './Preferences'
 import TextEntry from './TextEntry'
 
 const storage = window.localStorage
-const appBackground = storage.getItem('appBackground') || '#446'
-const headerBackground = storage.getItem('headerBackground') || '#334'
-const textEntryBackground = storage.getItem('textEntryBackground') || '#88B'
+const appBackground = storage.getItem('appBackground') || '#668'
+const headerBackground = storage.getItem('headerBackground') || '#446'
+const textEntryBackground = storage.getItem('textEntryBackground') || '#AAC'
 const textEntryFontSize = storage.getItem('textEntryFontSize') || '1em'
 const wordCountGoal = storage.getItem('wordCountGoal') || '500'
 
@@ -17,7 +17,7 @@ const fullHeight = {
 const appStyle = {
   backgroundColor: appBackground,
   textAlign: 'center',
-  height: '100%',
+  paddingBottom: '400px',
 }
 
 const headerStyle = {

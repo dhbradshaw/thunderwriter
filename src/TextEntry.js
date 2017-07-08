@@ -33,20 +33,18 @@ class TextEntry extends Component {
       style.backgroundColor = 'red'
     }
     return (
-      <form onSubmit={this.handleSubmit} style={{ paddingTop: '10px' }}>
-        <div>
-          <label style={{ color: 'white' }}>
-            {this.state.count} words
-          </label>
-        </div>
+      <form onSubmit={this.handleSubmit} style={{ paddingTop: '8px' }}>
+        <p style={{ color: 'lightgrey', padding: 0, margin: 0 }}>
+          {this.state.count} / {this.props.goal}
+        </p>
         <textarea
           value={this.state.value}
           onChange={this.handleChange}
           style={style}
         />
-        <div>
+        {/* <div>
           <input type="submit" value="Submit" />
-        </div>
+        </div> */}
       </form>
     )
   }
