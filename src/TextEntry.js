@@ -35,7 +35,7 @@ class TextEntry extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label>
+          <label style={{ color: 'white' }}>
             {this.state.count} words
           </label>
         </div>
