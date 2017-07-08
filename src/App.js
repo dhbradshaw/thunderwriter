@@ -35,12 +35,25 @@ const textAreaStyle = {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { showPreferences: false }
+
+    this.togglePreferences = this.togglePreferences.bind(this)
+  }
+  togglePreferences() {
+    this.setState({ showPreferences: !this.state.showPreferences })
+  }
   render() {
     return (
-      <div className="App" style={appStyle}>
+      <div
+        className="App"
+        style={appStyle}
+        onDoubleClick={this.togglePreferences}
+      >
         <Header style={headerStyle} />
         <div style={fullHeight}>
-          <Preferences />
+          {this.state.showPreferences ? <Preferences /> : null}
           <TextEntry goal={wordCountGoal} style={textAreaStyle} />
         </div>
       </div>
