@@ -68,7 +68,7 @@ class Preferences extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} style={{ backgroundColor: 'grey' }}>
         <Input
           label={'App Background'}
           name={'appBackground'}

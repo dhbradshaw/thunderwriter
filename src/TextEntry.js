@@ -33,7 +33,7 @@ class TextEntry extends Component {
       style.backgroundColor = 'red'
     }
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} style={{ paddingTop: '10px' }}>
         <div>
           <label style={{ color: 'white' }}>
             {this.state.count} words
