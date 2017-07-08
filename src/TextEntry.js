@@ -7,7 +7,8 @@ const storage = window.localStorage
 class TextEntry extends Component {
   constructor(props) {
     super(props)
-    const value = storage.getItem(textKey) || 'Write text here!'
+    const value =
+      storage.getItem(textKey) || 'Write text here. Double click to customize.'
     this.state = {
       value: value,
       count: wordCount(value),
