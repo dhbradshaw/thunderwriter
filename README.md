@@ -25,19 +25,21 @@ To restore a default preference, just blank out the field and press "submit".
 
 If you want to install tinker with this locally, here's what you do:
 
-Clone this repository:
+1. Clone this repository:
 
-    git clone git@github.com:dhbradshaw/thunderwriter.git
+    git clone https://github.com/dhbradshaw/thunderwriter.git
+    
+(If you don't have ssh for gitub set up, clone https://github.com/dhbradshaw/thunderwriter.git instead.)
 
-Change directory to the new project directory
+2. Change directory to the new project directory
 
     cd thunderwriter
 
-Install the node dependencies
+3. Install the node dependencies
 
     npm install
 
-Start up the development server
+4. Start up the development server
 
     npm start
 
