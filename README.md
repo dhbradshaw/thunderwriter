@@ -28,6 +28,8 @@ If you want to install tinker with this locally, here's what you do:
 Clone this repository:
 
     git clone git@github.com:dhbradshaw/thunderwriter.git
+    
+(If you don't have ssh for gitub set up, clone https://github.com/dhbradshaw/thunderwriter.git instead.)
 
 Change directory to the new project directory
 
