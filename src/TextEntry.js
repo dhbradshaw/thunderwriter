@@ -31,7 +31,7 @@ class TextEntry extends Component {
   render() {
     const style = { ...this.props.style }
     if (this.state.count > this.props.goal) {
-      style.backgroundColor = 'red'
+      style.backgroundColor = this.props.goalCompleteBackground
     }
     return (
       <form onSubmit={this.handleSubmit} style={{ paddingTop: '8px' }}>

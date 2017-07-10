@@ -39,6 +39,8 @@ class Preferences extends React.Component {
       appBackground: storage.getItem('appBackground') || '#446',
       headerBackground: storage.getItem('headerBackground') || '#334',
       textEntryBackground: storage.getItem('textEntryBackground') || '#88B',
+      wordCountAchievedTextEntryBackground:
+        storage.getItem('wordCountAchievedTextEntryBackground') || 'red',
       textEntryFontSize: storage.getItem('textEntryFontSize') || '1em',
       wordCountGoal: storage.getItem('wordCountGoal') || '500',
     }
@@ -51,6 +53,7 @@ class Preferences extends React.Component {
       'appBackground',
       'headerBackground',
       'textEntryBackground',
+      'wordCountAchievedTextEntryBackground',
       'textEntryFontSize',
       'wordCountGoal',
     ]
@@ -88,6 +91,13 @@ class Preferences extends React.Component {
           name={'textEntryBackground'}
           type={'text'}
           value={this.state['textEntryBackground']}
+          onChange={this.handleInputChange}
+        />
+        <Input
+          label={'Goal Complete Text Entry Background'}
+          name={'wordCountAchievedTextEntryBackground'}
+          type={'text'}
+          value={this.state['wordCountAchievedTextEntryBackground']}
           onChange={this.handleInputChange}
         />
         <Input
