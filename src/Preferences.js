@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import wordCount from './wordCount'
+import version from './version'
 
 const storage = window.localStorage
 
@@ -71,51 +72,56 @@ class Preferences extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} style={{ backgroundColor: 'grey' }}>
-        <Input
-          label={'App Background'}
-          name={'appBackground'}
-          type={'text'}
-          value={this.state['appBackground']}
-          onChange={this.handleInputChange}
-        />
-        <Input
-          label={'Header Background'}
-          name={'headerBackground'}
-          type={'text'}
-          value={this.state['headerBackground']}
-          onChange={this.handleInputChange}
-        />
-        <Input
-          label={'Text Entry Background'}
-          name={'textEntryBackground'}
-          type={'text'}
-          value={this.state['textEntryBackground']}
-          onChange={this.handleInputChange}
-        />
-        <Input
-          label={'Goal Complete Text Entry Background'}
-          name={'wordCountAchievedTextEntryBackground'}
-          type={'text'}
-          value={this.state['wordCountAchievedTextEntryBackground']}
-          onChange={this.handleInputChange}
-        />
-        <Input
-          label={'Text Entry Font Size'}
-          name={'textEntryFontSize'}
-          type={'text'}
-          value={this.state['textEntryFontSize']}
-          onChange={this.handleInputChange}
-        />
-        <Input
-          label={'Word Count Goal'}
-          name={'wordCountGoal'}
-          type={'number'}
-          value={this.state['wordCountGoal']}
-          onChange={this.handleInputChange}
-        />
-        <input type="submit" value="Submit" />
-      </form>
+      <div style={{ backgroundColor: 'grey', color: 'white' }}>
+        <form onSubmit={this.handleSubmit}>
+          <Input
+            label={'App Background'}
+            name={'appBackground'}
+            type={'text'}
+            value={this.state['appBackground']}
+            onChange={this.handleInputChange}
+          />
+          <Input
+            label={'Header Background'}
+            name={'headerBackground'}
+            type={'text'}
+            value={this.state['headerBackground']}
+            onChange={this.handleInputChange}
+          />
+          <Input
+            label={'Text Entry Background'}
+            name={'textEntryBackground'}
+            type={'text'}
+            value={this.state['textEntryBackground']}
+            onChange={this.handleInputChange}
+          />
+          <Input
+            label={'Goal Complete Text Entry Background'}
+            name={'wordCountAchievedTextEntryBackground'}
+            type={'text'}
+            value={this.state['wordCountAchievedTextEntryBackground']}
+            onChange={this.handleInputChange}
+          />
+          <Input
+            label={'Text Entry Font Size'}
+            name={'textEntryFontSize'}
+            type={'text'}
+            value={this.state['textEntryFontSize']}
+            onChange={this.handleInputChange}
+          />
+          <Input
+            label={'Word Count Goal'}
+            name={'wordCountGoal'}
+            type={'number'}
+            value={this.state['wordCountGoal']}
+            onChange={this.handleInputChange}
+          />
+          <p style={{ fontSize: 'small', textAlign: 'left' }}>
+            ThunderWriter version {version}
+          </p>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     )
   }
 }
