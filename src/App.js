@@ -34,6 +34,8 @@ const textAreaStyle = {
   backgroundColor: textEntryBackground,
   fontSize: textEntryFontSize,
   marginTop: '20px',
+  // border: 'none',
+  padding: '.25em',
 }
 
 class App extends Component {

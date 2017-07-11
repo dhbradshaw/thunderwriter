@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import wordCount from './wordCount'
+import React from 'react'
 import version from './version'
 
 const storage = window.localStorage

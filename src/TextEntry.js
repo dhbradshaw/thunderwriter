@@ -4,11 +4,13 @@ import wordCount from './wordCount'
 const textKey = 'text'
 const storage = window.localStorage
 
+const defaultMessage =
+  'Write text here.\n\nWant different colors or font? Double click to customize.'
+
 class TextEntry extends Component {
   constructor(props) {
     super(props)
-    const value =
-      storage.getItem(textKey) || 'Write text here. Double click to customize.'
+    const value = storage.getItem(textKey) || defaultMessage
     this.state = {
       value: value,
       count: wordCount(value),
