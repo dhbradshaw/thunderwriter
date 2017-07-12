@@ -4,45 +4,74 @@ import wordCount from './wordCount'
 const textKey = 'text'
 const storage = window.localStorage
 
+const pStyle = { color: 'lightgrey', padding: 0, margin: 0 }
+
 const defaultMessage =
   'Write text here.\n\nWant different colors or font? Double click to customize.'
+
+const elapsed = (t0, t1) => Math.round((t1 - t0) / 1000)
 
 class TextEntry extends Component {
   constructor(props) {
     super(props)
-    const value = storage.getItem(textKey) || defaultMessage
+    const text = storage.getItem(textKey) || defaultMessage
     this.state = {
       baseCount: 0,
-      count: wordCount(value),
-      value: value,
+      count: wordCount(text),
+      finished: false,
+      t0: new Date(),
+      tlast: new Date(),
+      text: text,
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleTare = this.handleTare.bind(this)
+  }
+  netCount() {
+    return this.state.count - this.state.baseCount
   }
   handleChange(event) {
-    const value = event.target.value
-    const count = wordCount(value)
-    this.setState({ count, value })
-    storage.setItem(textKey, value)
+    const text = event.target.value
+    const count = wordCount(text)
+    this.setState({ count, text })
+
+    if (this.netCount() <= this.props.goal) {
+      this.setState({ tlast: new Date() })
+    } else {
+      this.setState({ finished: true })
+    }
+    storage.setItem(textKey, text)
   }
 
-  handleSubmit(event) {
-    this.setState({ baseCount: this.state.count })
+  handleTare(event) {
+    const t = new Date()
+    this.setState({
+      baseCount: this.state.count,
+      t0: t,
+      tlast: t,
+    })
     event.preventDefault()
   }
   render() {
     const style = { ...this.props.style }
-    if (this.state.count > this.props.goal) {
+    let celebrate
+    if (this.netCount() > this.props.goal) {
       style.backgroundColor = this.props.goalCompleteBackground
+      celebrate = (
+        <p style={pStyle}>
+          Success {this.props.goal} in{' '}
+          {elapsed(this.state.t0, this.state.tlast)} seconds
+        </p>
+      )
     }
     return (
-      <form onSubmit={this.handleSubmit} style={{ paddingTop: '8px' }}>
-        <p style={{ color: 'lightgrey', padding: 0, margin: 0 }}>
-          {this.state.count - this.state.baseCount} / {this.props.goal}
+      <form onSubmit={this.handleTare} style={{ paddingTop: '8px' }}>
+        {celebrate}
+        <p style={pStyle}>
+          {this.netCount()} / {this.props.goal}
         </p>
         <textarea
-          value={this.state.value}
+          value={this.state.text}
           onChange={this.handleChange}
           style={style}
         />
