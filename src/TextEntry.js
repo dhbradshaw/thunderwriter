@@ -12,8 +12,9 @@ class TextEntry extends Component {
     super(props)
     const value = storage.getItem(textKey) || defaultMessage
     this.state = {
-      value: value,
+      baseCount: 0,
       count: wordCount(value),
+      value: value,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -27,7 +28,7 @@ class TextEntry extends Component {
   }
 
   handleSubmit(event) {
-    alert('An essay was submitted: ' + this.state.value)
+    this.setState({ baseCount: this.state.count })
     event.preventDefault()
   }
   render() {
@@ -38,16 +39,16 @@ class TextEntry extends Component {
     return (
       <form onSubmit={this.handleSubmit} style={{ paddingTop: '8px' }}>
         <p style={{ color: 'lightgrey', padding: 0, margin: 0 }}>
-          {this.state.count} / {this.props.goal}
+          {this.state.count - this.state.baseCount} / {this.props.goal}
         </p>
         <textarea
           value={this.state.value}
           onChange={this.handleChange}
           style={style}
         />
-        {/* <div>
-          <input type="submit" value="Submit" />
-        </div> */}
+        <div>
+          <input type="submit" value="Tare" />
+        </div>
       </form>
     )
   }
