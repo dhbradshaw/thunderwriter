@@ -30,12 +30,28 @@ class TextEntry extends Component {
   netCount() {
     return this.state.count - this.state.baseCount
   }
+  goalReached() {
+    const net = this.netCount()
+    const goal = this.props.goal
+    if (net > goal) {
+      return true
+    }
+    if (net - goal === 0) {
+      // If last character isn't a digit or letter, then you
+      // have finished the word, so you're done!
+      const last = this.state.text.slice(-1)
+      if (!/[A-Za-z0-9]/.exec(last)) {
+        return true
+      }
+    }
+    return false
+  }
   handleChange(event) {
     const text = event.target.value
     const count = wordCount(text)
     this.setState({ count, text })
 
-    if (this.netCount() <= this.props.goal) {
+    if (this.goalReached()) {
       this.setState({ tlast: new Date() })
     } else {
       this.setState({ finished: true })
@@ -55,7 +71,7 @@ class TextEntry extends Component {
   render() {
     const style = { ...this.props.style }
     let celebrate
-    if (this.netCount() > this.props.goal) {
+    if (this.goalReached()) {
       style.backgroundColor = this.props.goalCompleteBackground
       celebrate = (
         <p style={pStyle}>
