@@ -74,17 +74,16 @@ class TextEntry extends Component {
     if (this.goalReached()) {
       style.backgroundColor = this.props.goalCompleteBackground
       celebrate = (
-        <p style={pStyle}>
-          Success {this.props.goal} in{' '}
-          {elapsed(this.state.t0, this.state.tlast)} seconds
-        </p>
+        <span>
+          Success: {this.props.goal} word in{' '}
+          {elapsed(this.state.t0, this.state.tlast)} seconds.
+        </span>
       )
     }
     return (
       <form onSubmit={this.handleTare} style={{ paddingTop: '8px' }}>
-        {celebrate}
         <p style={pStyle}>
-          {this.netCount()} / {this.props.goal}
+          {celebrate} {this.netCount()} / {this.props.goal}
         </p>
         <textarea
           value={this.state.text}
