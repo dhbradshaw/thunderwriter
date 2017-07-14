@@ -81,7 +81,15 @@ class TextEntry extends Component {
       )
     }
     return (
-      <form onSubmit={this.handleTare} style={{ paddingTop: '8px' }}>
+      <form
+        onSubmit={this.handleTare}
+        style={{ paddingTop: '8px' }}
+        onKeyPress={e => {
+          if (e.key === 'T' && e.ctrlKey && e.altKey) {
+            this.handleTare(e)
+          }
+        }}
+      >
         <p style={pStyle}>
           {celebrate} {this.netCount()} / {this.props.goal}
         </p>
