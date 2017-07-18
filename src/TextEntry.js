@@ -67,7 +67,6 @@ class TextEntry extends Component {
       timerHistory: [new Date()],
       tLastWord: t,
     })
-    console.log(event)
     event.preventDefault()
   }
   togglePause(event) {

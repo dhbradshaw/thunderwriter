@@ -14,12 +14,20 @@ class Timer extends React.Component {
     clearInterval(this.timerID)
   }
 
-  elapsed() {
-    const now = this.state.now
-    const then = this.props.history[0]
-    const ms = now - then
-    const seconds = ms / 1000
-    return seconds
+  dt(t0, t1) {
+    const secondsApart = (t1 - t0) / 1000
+    return secondsApart
+  }
+
+  elapsed(now, history) {
+    const l = history.length
+    let total = 0
+    for (let i = 0; i < l; i += 2) {
+      let t0 = history[i]
+      let t1 = history[i + 1] || now
+      total += this.dt(t0, t1)
+    }
+    return total
   }
 
   tick() {
@@ -29,7 +37,11 @@ class Timer extends React.Component {
   }
 
   render() {
-    return <span>{Math.round(this.elapsed())}</span>
+    return (
+      <span>
+        {Math.round(this.elapsed(this.state.now, this.props.history) / 60)}m
+      </span>
+    )
   }
 }
 
