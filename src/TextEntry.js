@@ -20,8 +20,8 @@ class TextEntry extends Component {
       baseCount: 0,
       count: wordCount(text),
       finished: false,
-      timeHistory: [new Date()],
-      tlast: new Date(),
+      timerHistory: [new Date()],
+      tLastWord: new Date(),
       text: text,
     }
 
@@ -53,7 +53,7 @@ class TextEntry extends Component {
     this.setState({ count, text })
 
     if (this.goalReached()) {
-      this.setState({ tlast: new Date() })
+      this.setState({ tLastWord: new Date() })
     } else {
       this.setState({ finished: true })
     }
@@ -64,8 +64,8 @@ class TextEntry extends Component {
     const t = new Date()
     this.setState({
       baseCount: this.state.count,
-      timeHistory: [new Date()],
-      tlast: t,
+      timerHistory: [new Date()],
+      tLastWord: t,
     })
     event.preventDefault()
   }
@@ -77,7 +77,7 @@ class TextEntry extends Component {
       celebrate = (
         <span>
           Success: {this.props.goal} word in{' '}
-          {elapsed(this.state.timeHistory[0], this.state.tlast)} seconds.
+          {elapsed(this.state.timerHistory[0], this.state.tLastWord)} seconds.
         </span>
       )
     }
@@ -92,9 +92,10 @@ class TextEntry extends Component {
         }}
       >
         <p style={pStyle}>
-          {celebrate} {this.netCount()} / {this.props.goal}
+          {celebrate} {this.netCount()} / {this.props.goal}{' '}
+          <small><Timer history={[new Date()]} /></small>
         </p>
-        <p><Timer history={[new Date()]} /></p>
+        <p />
         <textarea
           value={this.state.text}
           onChange={this.handleChange}
