@@ -67,6 +67,13 @@ class TextEntry extends Component {
       timerHistory: [new Date()],
       tLastWord: t,
     })
+    console.log(event)
+    event.preventDefault()
+  }
+  togglePause(event) {
+    this.setState({
+      timerHistory: this.state.timerHistory.concat([new Date()]),
+    })
     event.preventDefault()
   }
   render() {
@@ -83,17 +90,20 @@ class TextEntry extends Component {
     }
     return (
       <form
-        onSubmit={this.handleTare}
+        onSubmit={e => this.handleTare(e)}
         style={{ paddingTop: '8px' }}
         onKeyPress={e => {
           if (e.key === 'T' && e.ctrlKey && e.altKey) {
             this.handleTare(e)
           }
+          if (e.key === 'P' && e.ctrlKey && e.altKey) {
+            this.togglePause(e)
+          }
         }}
       >
         <p style={pStyle}>
           {celebrate} {this.netCount()} / {this.props.goal}{' '}
-          <small><Timer history={[new Date()]} /></small>
+          <small><Timer history={this.state.timerHistory} /></small>
         </p>
         <p />
         <textarea
@@ -102,6 +112,9 @@ class TextEntry extends Component {
           style={style}
         />
         <div>
+          <button onClick={e => this.togglePause(e)}>
+            {this.state.timerHistory.length % 2 === 1 ? 'Pause' : 'Play'}
+          </button>
           <input type="submit" value="Tare" />
         </div>
       </form>
