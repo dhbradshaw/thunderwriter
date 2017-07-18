@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import wordCount from './wordCount'
+import Timer from './Timer'
 
 const textKey = 'text'
 const storage = window.localStorage
@@ -19,7 +20,7 @@ class TextEntry extends Component {
       baseCount: 0,
       count: wordCount(text),
       finished: false,
-      t0: new Date(),
+      timeHistory: [new Date()],
       tlast: new Date(),
       text: text,
     }
@@ -63,7 +64,7 @@ class TextEntry extends Component {
     const t = new Date()
     this.setState({
       baseCount: this.state.count,
-      t0: t,
+      timeHistory: [new Date()],
       tlast: t,
     })
     event.preventDefault()
@@ -76,7 +77,7 @@ class TextEntry extends Component {
       celebrate = (
         <span>
           Success: {this.props.goal} word in{' '}
-          {elapsed(this.state.t0, this.state.tlast)} seconds.
+          {elapsed(this.state.timeHistory[0], this.state.tlast)} seconds.
         </span>
       )
     }
@@ -93,6 +94,7 @@ class TextEntry extends Component {
         <p style={pStyle}>
           {celebrate} {this.netCount()} / {this.props.goal}
         </p>
+        <p><Timer history={[new Date()]} /></p>
         <textarea
           value={this.state.text}
           onChange={this.handleChange}
