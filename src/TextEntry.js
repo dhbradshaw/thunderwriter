@@ -75,8 +75,12 @@ class TextEntry extends Component {
     })
     event.preventDefault()
   }
+  paused() {
+    return this.state.timerHistory.length % 2 === 0
+  }
   render() {
     const style = { ...this.props.style }
+    const paused = this.paused()
     let celebrate
     if (this.goalReached()) {
       style.backgroundColor = this.props.goalCompleteBackground
@@ -86,6 +90,9 @@ class TextEntry extends Component {
           {elapsed(this.state.timerHistory[0], this.state.tLastWord)} seconds.
         </span>
       )
+    }
+    if (paused) {
+      style.backgroundColor = 'papayawhip'
     }
     return (
       <form
@@ -102,7 +109,10 @@ class TextEntry extends Component {
       >
         <p style={pStyle}>
           {celebrate} {this.netCount()} / {this.props.goal}{' '}
-          <small><Timer history={this.state.timerHistory} /></small>
+          <small>
+            <Timer history={this.state.timerHistory} />{' '}
+            {paused ? ' paused' : 'ticking'}
+          </small>
         </p>
         <p />
         <textarea
@@ -112,7 +122,7 @@ class TextEntry extends Component {
         />
         <div>
           <button onClick={e => this.togglePause(e)}>
-            {this.state.timerHistory.length % 2 === 1 ? 'Pause' : 'Play'}
+            {paused ? 'Play' : 'Pause'}
           </button>
           <input type="submit" value="Tare" />
         </div>

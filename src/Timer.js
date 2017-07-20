@@ -19,12 +19,15 @@ class Timer extends React.Component {
     return secondsApart
   }
 
-  elapsed(now, history) {
+  elapsed(t, history) {
     const l = history.length
     let total = 0
     for (let i = 0; i < l; i += 2) {
       let t0 = history[i]
-      let t1 = history[i + 1] || now
+      if (t0 > t) {
+        break
+      }
+      let t1 = Math.min(history[i + 1] || t, t)
       total += this.dt(t0, t1)
     }
     return total
