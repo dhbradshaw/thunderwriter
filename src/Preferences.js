@@ -40,7 +40,7 @@ class Preferences extends React.Component {
       headerBackground: storage.getItem('headerBackground') || '#334',
       textEntryBackground: storage.getItem('textEntryBackground') || '#88B',
       wordCountAchievedTextEntryBackground:
-        storage.getItem('wordCountAchievedTextEntryBackground') || 'coral',
+        storage.getItem('wordCountAchievedTextEntryBackground') || 'lightblue',
       textEntryFontSize: storage.getItem('textEntryFontSize') || '1em',
       wordCountGoal: storage.getItem('wordCountGoal') || '500',
     }

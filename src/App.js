@@ -8,7 +8,7 @@ const appBackground = storage.getItem('appBackground') || '#668'
 const headerBackground = storage.getItem('headerBackground') || '#446'
 const textEntryBackground = storage.getItem('textEntryBackground') || '#AAC'
 const wordCountAchievedTextEntryBackground =
-  storage.getItem('wordCountAchievedTextEntryBackground') || 'coral'
+  storage.getItem('wordCountAchievedTextEntryBackground') || 'lightblue'
 const textEntryFontSize = storage.getItem('textEntryFontSize') || '1em'
 const wordCountGoal = storage.getItem('wordCountGoal') || '500'
 
